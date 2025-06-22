@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Acceptance Letter Generator</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        padding: 20px;
+        background: #f9f9f9;
+      }
+
+      h1 {
+        text-align: center;
+        margin-bottom: 30px;
+      }
+
+      form {
+        max-width: 900px;
+        margin: 0 auto;
+        background: white;
+        padding: 20px 30px;
+        border-radius: 8px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      }
+
+      .row {
+        display: flex;
+        gap: 20px;
+        margin-bottom: 20px;
+        flex-wrap: wrap;
+      }
+
+      .field {
+        flex: 1 1 calc(33.333% - 20px);
+        display: flex;
+        flex-direction: column;
+        min-width: 200px;
+      }
+
+      label {
+        font-weight: bold;
+        margin-bottom: 6px;
+        font-size: 14px;
+        color: #333;
+      }
+
+      input[type="text"],
+      input[type="date"] {
+        padding: 8px 12px;
+        font-size: 14px;
+        border: 1.5px solid #ccc;
+        border-radius: 5px;
+        transition: border-color 0.3s;
+      }
+
+      input[type="text"]:focus,
+      input[type="date"]:focus {
+        border-color: #007bff;
+        outline: none;
+      }
+
+      .checkbox-field {
+        display: flex;
+        align-items: center;
+        margin-top: 32px;
+        font-weight: normal;
+        font-size: 14px;
+        color: #555;
+      }
+
+      .checkbox-field input[type="checkbox"] {
+        margin-left: 8px;
+        transform: scale(1.2);
+      }
+
+      button[type="submit"] {
+        display: block;
+        margin: 30px auto 0;
+        background-color: #007bff;
+        color: white;
+        font-size: 16px;
+        padding: 12px 30px;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+      }
+
+      button[type="submit"]:hover {
+        background-color: #0056b3;
+      }
+
+      #status {
+        max-width: 900px;
+        margin: 15px auto;
+        font-weight: bold;
+        color: green;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Generate Acceptance/Rejection Letter PDF</h1>
+    <form id="letterForm">
+      <div class="row">
+        <div class="field">
+          <label for="referralDate">Referral Date</label>
+          <input type="date" id="requestDate" name="requestDate" required />
+        </div>
+        <div class="field">
+          <label for="referralId">Referral ID</label>
+          <input type="text" id="referralId" name="referralId" required />
+        </div>
+        <div class="field">
+          <label for="patientName">Patient Name</label>
+          <input type="text" id="patientName" name="patientName" required />
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="field">
+          <label for="nationalId">National ID</label>
+          <input type="text" id="nationalId" name="nationalId" required />
+        </div>
+        <div class="field">
+          <label for="referralType">Referral Type</label>
+          <input type="text" id="referralType" name="referralType" />
+        </div>
+        <div class="field">
+          <label for="specialty">Specialty</label>
+          <input type="text" id="specialty" name="specialty" />
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="field">
+          <label for="sourceProvider">Source Provider</label>
+          <input
+            type="text"
+            id="sourceProvider"
+            name="sourceProvider"
+            required
+          />
+        </div>
+        <div class="field">
+          <label for="nationality">Nationality</label>
+          <input type="text" id="nationality" name="nationality" />
+        </div>
+
+        <div class="checkbox-field" style="flex: 1 1 100%">
+          <label for="isRejection">Is Rejection Letter</label>
+          <input type="checkbox" id="isRejection" name="isRejection" />
+        </div>
+      </div>
+
+      <button type="submit">Create PDF</button>
+    </form>
+
+    <div id="status"></div>
+
+    <script>
+      const form = document.getElementById("letterForm");
+      const status = document.getElementById("status");
+
+      form.addEventListener("submit", async (event) => {
+        event.preventDefault();
+
+        const formData = new FormData(form);
+        const data = Object.fromEntries(formData.entries());
+        data.isRejection = formData.has("isRejection");
+
+        status.textContent = "Generating PDF...";
+
+        try {
+          // Call the exposed Node function to generate PDF
+          const filePath = await window.generatePdfFromForm(data);
+          status.textContent = `PDF generated and saved to: ${filePath}`;
+        } catch (err) {
+          status.textContent = "Error generating PDF: " + err.message;
+        }
+      });
+    </script>
+  </body>
+</html>

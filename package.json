@@ -1,0 +1,15 @@
+{
+  "name": "build-letter",
+  "version": "1.0.0",
+  "description": "Contains a server that can build patient letter",
+  "author": "ahmed nassar",
+  "license": "MIT",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "start": "node ./src/index.mjs"
+  },
+  "dependencies": {
+    "puppeteer": "^24.8.2"
+  }
+}
