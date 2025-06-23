@@ -239,8 +239,8 @@ const generateAcceptanceLetterHtml = ({
 
     <div class="footer">
       <p>وتقبلوا تحياتنا</p>
-      <div style="position: relative; width: 100%; min-height: 80px;">
-        <img src="${tadawiFileUrl}" alt="TADAWI Logo" style="height: 80px; height: 80px; position: absolute; left: 0; top: 50%; transform: translateY(-50%);" />
+      <div style="position: relative; width: 100%; min-height: 100px;">
+        <img src="${tadawiFileUrl}" alt="TADAWI Logo" style="height: 100px; width: 100px; position: absolute; left: 0; top: 40%; transform: translateY(-40%);" />
         <div style="text-align: center;">
           <strong>TADAWI MEDICAL HOSPITAL</strong>
         </div>
