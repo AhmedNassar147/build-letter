@@ -17,12 +17,14 @@ const ministryLogo = path.resolve(
 );
 
 const ehalaLogo = path.resolve(__dirname, "./images/ehala-compressed.png");
+const tadawiLogo = path.resolve(__dirname, "./images/tadawi.jpeg");
 
 const toBase64 = (imgPath) =>
   `data:image/png;base64,${fs.readFileSync(imgPath, { encoding: "base64" })}`;
 
 const ministryFileUrl = toBase64(ministryLogo);
 const ehalaFileUrl = toBase64(ehalaLogo);
+const tadawiFileUrl = toBase64(tadawiLogo);
 
 // Requested Bed Type = ICU
 
@@ -210,7 +212,7 @@ const generateAcceptanceLetterHtml = ({
       </tr>
       <tr>
         <td><strong>نوع السرير:</strong>${bedType}</td>
-        <td><strong>مدة الحجز:</strong>48 hours</td>
+        <td><strong>مدة الحجز:</strong> ٤٨ ساعة</td>
       </tr>
       <tr>
         <td colspan="2"><strong>التاريخ الميلادي:</strong> ${requestDate}</td>
@@ -234,7 +236,12 @@ const generateAcceptanceLetterHtml = ({
 
     <div class="footer">
       <p>وتقبلوا تحياتنا</p>
-      <p><strong>TADAWI MEDICAL HOSPITAL</strong></p>
+      <div style="position: relative; width: 100%; min-height: 40px;">
+        <img src="${tadawiFileUrl}" alt="TADAWI Logo" style="height: 40px; position: absolute; left: 0; top: 50%; transform: translateY(-50%);" />
+        <div style="text-align: center;">
+          <strong>TADAWI MEDICAL HOSPITAL</strong>
+        </div>
+      </div>
     </div>
 
     <div class="notes-section">
