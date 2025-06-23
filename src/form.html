@@ -108,28 +108,51 @@
           <label for="referralDate">Referral Date</label>
           <input type="date" id="requestDate" name="requestDate" required />
         </div>
+
         <div class="field">
           <label for="referralId">Referral ID</label>
           <input type="text" id="referralId" name="referralId" required />
-        </div>
-        <div class="field">
-          <label for="patientName">Patient Name</label>
-          <input type="text" id="patientName" name="patientName" required />
         </div>
       </div>
 
       <div class="row">
         <div class="field">
+          <label for="patientName">Patient Name</label>
+          <input type="text" id="patientName" name="patientName" required />
+        </div>
+
+        <div class="field">
+          <label for="mobileNumber">mobileNumber</label>
+          <input type="text" id="mobileNumber" name="mobileNumber" />
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="field">
+          <label for="nationality">Nationality</label>
+          <input
+            type="text"
+            id="nationality"
+            name="nationality"
+            value="Saudi"
+          />
+        </div>
+
+        <div class="field">
           <label for="nationalId">National ID</label>
           <input type="text" id="nationalId" name="nationalId" required />
         </div>
-        <div class="field">
-          <label for="referralType">Referral Type</label>
-          <input type="text" id="referralType" name="referralType" />
-        </div>
+      </div>
+
+      <div class="row">
         <div class="field">
           <label for="specialty">Specialty</label>
           <input type="text" id="specialty" name="specialty" />
+        </div>
+
+        <div class="field">
+          <label for="subSpecialty">subSpecialty</label>
+          <input type="text" id="subSpecialty" name="subSpecialty" />
         </div>
       </div>
 
@@ -143,17 +166,13 @@
             required
           />
         </div>
+
         <div class="field">
-          <label for="nationality">Nationality</label>
-          <input
-            type="text"
-            id="nationality"
-            name="nationality"
-            value="Saudi"
-          />
+          <label for="bedType">bedType</label>
+          <input type="text" id="bedType" name="bedType" />
         </div>
 
-        <div class="checkbox-field" style="flex: 1 1 100%">
+        <div class="checkbox-field">
           <label for="isRejection">Is Rejection Letter</label>
           <input type="checkbox" id="isRejection" name="isRejection" />
         </div>

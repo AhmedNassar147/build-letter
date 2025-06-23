@@ -38,9 +38,11 @@ async function main() {
       patientName: formData.patientName,
       nationalId: formData.nationalId,
       specialty: formData.specialty,
-      referralType: formData.referralType,
+      subSpecialty: formData.subSpecialty,
       sourceProvider: formData.sourceProvider,
       nationality: formData.nationality,
+      bedType: formData.bedType,
+      mobileNumber: formData.mobileNumber,
       isRejection: isRejection,
     });
 

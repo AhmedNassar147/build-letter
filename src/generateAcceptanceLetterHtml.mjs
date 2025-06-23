@@ -24,16 +24,20 @@ const toBase64 = (imgPath) =>
 const ministryFileUrl = toBase64(ministryLogo);
 const ehalaFileUrl = toBase64(ehalaLogo);
 
+// Requested Bed Type = ICU
+
 const generateAcceptanceLetterHtml = ({
   requestDate: _requestDate,
   referralId,
   patientName,
   nationalId,
-  referralType,
   specialty,
   sourceProvider,
   nationality,
   isRejection,
+  bedType,
+  subSpecialty,
+  mobileNumber,
 }) => {
   const [year, month, day] = _requestDate.split("-");
   const requestDate = `${day}/${month}/${year}`;
@@ -183,7 +187,7 @@ const generateAcceptanceLetterHtml = ({
         <td><strong>اسم المريض:</strong> ${patientName}</td>
         <td><strong>رقم الإثبات:</strong> ${nationalId}</td>
         <td><strong>الجنسية:</strong> ${nationality || "SAUDI"}</td>
-        <td><strong>رقم التواصل:</strong> -</td>
+        <td><strong>رقم التواصل:</strong> ${mobileNumber || ""}</td>
       </tr>
 
       ${
@@ -201,14 +205,12 @@ const generateAcceptanceLetterHtml = ({
       <tr>
         <td><strong>رقم الملف الطبي:</strong></td>
         <td><strong>القسم:</strong> ${specialty || ""}</td>
-        <td><strong>الطبيب المعالج:</strong></td>
+        <td><strong>الطبيب المعالج:</strong>${subSpecialty || ""}</td>
         <td><strong>رقم الغرفة:</strong></td>
       </tr>
       <tr>
-        <td><strong>رقم السرير:</strong></td>
-        <td><strong>مدة الحجز:</strong></td>
-        <td><strong>يوم الموعد:</strong></td>
-        <td><strong>وقت الموعد:</strong></td>
+        <td><strong>نوع السرير:</strong>${bedType}</td>
+        <td><strong>مدة الحجز:</strong>48 hours</td>
       </tr>
       <tr>
         <td colspan="2"><strong>التاريخ الميلادي:</strong> ${requestDate}</td>
