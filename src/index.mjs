@@ -1,7 +1,8 @@
 import path from "path";
 import { fileURLToPath } from "url";
 import puppeteer from "puppeteer";
-import generateAcceptanceLetterHtml from "./generateAcceptanceLetterHtml.mjs"; // your function
+import generateAcceptanceLetterHtml from "./generateAcceptanceLetterHtml.mjs";
+import generateFolderIfNotExisting from "./generateFolderIfNotExisting.mjs";
 
 // __dirname fix for ESM
 const __filename = fileURLToPath(import.meta.url);
@@ -14,6 +15,15 @@ async function main() {
     args: ["--start-maximized"], // Maximize window on launch
   }); // visible browser for interaction
   const page = await browser.newPage();
+
+  const desktopPath = path.join(process.env.USERPROFILE, "Desktop");
+
+  console.log("desktopPath", desktopPath);
+
+  await Promise.all([
+    generateFolderIfNotExisting(`${desktopPath}/acceptance`),
+    generateFolderIfNotExisting(`${desktopPath}/rejection`),
+  ]);
 
   // Expose a Node function to the page to generate PDF
   await page.exposeFunction("generatePdfFromForm", async (formData) => {
@@ -38,11 +48,11 @@ async function main() {
     await pdfPage.setContent(htmlContent, { waitUntil: "networkidle0" });
     await pdfPage.bringToFront();
 
-    const fileName = `${isRejection ? "rejection" : "acceptance"}_letter_${
-      formData.referralId
-    }.pdf`;
+    const fileName = `letter_${formData.referralId}.pdf`;
 
-    const outputPath = path.resolve("D:\\", fileName);
+    const folderName = isRejection ? "rejection" : "acceptance";
+
+    const outputPath = path.resolve(desktopPath, folderName, fileName);
 
     await pdfPage.pdf({
       path: outputPath,
