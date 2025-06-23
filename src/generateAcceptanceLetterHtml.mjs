@@ -30,7 +30,7 @@ const generateAcceptanceLetterHtml = ({
   patientName,
   nationalId,
   referralType,
-  requiredSpecialty,
+  specialty,
   sourceProvider,
   nationality,
   isRejection,
@@ -201,7 +201,7 @@ const generateAcceptanceLetterHtml = ({
       <tr>
         <td><strong>رقم الملف الطبي:</strong></td>
         <td><strong>القسم:</strong> ${referralType || ""}</td>
-        <td><strong>الطبيب المعالج:</strong> ${requiredSpecialty || ""}</td>
+        <td><strong>الطبيب المعالج:</strong> ${specialty || ""}</td>
         <td><strong>رقم الغرفة:</strong></td>
       </tr>
       <tr>

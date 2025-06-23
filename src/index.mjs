@@ -38,6 +38,7 @@ async function main() {
       patientName: formData.patientName,
       nationalId: formData.nationalId,
       specialty: formData.specialty,
+      referralType: formData.referralType,
       sourceProvider: formData.sourceProvider,
       nationality: formData.nationality,
       isRejection: isRejection,
