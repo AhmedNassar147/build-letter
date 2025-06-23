@@ -178,7 +178,10 @@ const generateAcceptanceLetterHtml = ({
     <div class="header-logos">
       <img src="${ehalaFileUrl}" alt="Referral Program">
       <div class="header-center-text">
-        المملكة العربية السعودية<br>وزارة الصحة<br>برنامج الإحالة
+        المملكة العربية السعودية
+        <br>وزارة الصحة
+        <br>برنامج الإحالة
+        <br>${isRejection ? "إشعار رفض الإحالة" : "إشعار قبول الإحالة"}
       </div>
       <img src="${ministryFileUrl}" alt="Ministry of Health">
     </div>
@@ -236,8 +239,8 @@ const generateAcceptanceLetterHtml = ({
 
     <div class="footer">
       <p>وتقبلوا تحياتنا</p>
-      <div style="position: relative; width: 100%; min-height: 40px;">
-        <img src="${tadawiFileUrl}" alt="TADAWI Logo" style="height: 40px; position: absolute; left: 0; top: 50%; transform: translateY(-50%);" />
+      <div style="position: relative; width: 100%; min-height: 80px;">
+        <img src="${tadawiFileUrl}" alt="TADAWI Logo" style="height: 80px; height: 80px; position: absolute; left: 0; top: 50%; transform: translateY(-50%);" />
         <div style="text-align: center;">
           <strong>TADAWI MEDICAL HOSPITAL</strong>
         </div>
