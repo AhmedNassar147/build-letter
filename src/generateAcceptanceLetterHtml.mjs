@@ -200,8 +200,8 @@ const generateAcceptanceLetterHtml = ({
       <tr class="section-title"><td colspan="4">بيانات القبول</td></tr>
       <tr>
         <td><strong>رقم الملف الطبي:</strong></td>
-        <td><strong>القسم:</strong> ${referralType || ""}</td>
-        <td><strong>الطبيب المعالج:</strong> ${specialty || ""}</td>
+        <td><strong>القسم:</strong> ${specialty || ""}</td>
+        <td><strong>الطبيب المعالج:</strong></td>
         <td><strong>رقم الغرفة:</strong></td>
       </tr>
       <tr>
